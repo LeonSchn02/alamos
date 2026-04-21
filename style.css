@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --card-hover: #f9fbff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  --primary: #4f46e5;
+  --primary-soft: #eef2ff;
+
+  --danger: #ef4444;
+  --danger-soft: #fee2e2;
+
+  --info: #0ea5e9;
+  --info-soft: #e0f2fe;
+
+  --warning: #f59e0b;
+  --warning-soft: #fef3c7;
+
+  --success: #10b981;
+  --success-soft: #d1fae5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ecfeff 100%);
+  color: var(--text);
+}
+
+/* Hauptbereich */
+.todo-wrapper {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+/* Titelbereich */
+.todo-header {
+  margin-bottom: 24px;
+}
+
+.todo-title {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.todo-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Liste */
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+/* Ein einzelnes Element */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  transition: all 0.25s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  background: var(--card-hover);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+/* Checkbox / Icon-Bereich */
+.todo-check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Inhalt */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.todo-description {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Wenn erledigt */
+.todo-item.done .todo-label {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.todo-item.done .todo-description {
+  color: #b0b8c4;
+}
+
+/* Status-Badge rechts */
+.todo-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+/* Ersatz für box1, box2, box3 */
+.todo-badge.high {
+  background: var(--danger-soft);
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.todo-badge.medium {
+  background: var(--info-soft);
+  color: #0369a1;
+  border-color: #bae6fd;
+}
+
+.todo-badge.low {
+  background: var(--warning-soft);
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* Optional: kleines farbiges Icon links */
+.todo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.todo-dot.high {
+  background: var(--danger);
+}
+
+.todo-dot.medium {
+  background: var(--info);
+}
+
+.todo-dot.low {
+  background: var(--warning);
+}
+
+/* Gruppierung / Karte */
+.todo-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+/* Buttons optional */
+.todo-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.todo-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.todo-btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.todo-btn.primary:hover {
+  background: #4338ca;
+}
+
+.todo-btn.secondary {
+  background: #f3f4f6;
+  color: var(--text);
+}
+
+.todo-btn.secondary:hover {
+  background: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .todo-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .todo-badge {
+    min-width: auto;
+    margin-left: 38px;
+  }
+
+  .todo-title {
+    font-size: 1.6rem;
+  }
+}
